@@ -2,89 +2,232 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>This could be your menu – designed by Piet</title>
+  <title>Where your café menu could live – Piet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f4f1ec;
+    :root {
+      --bg: #f4f1ec;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #666666;
+      --accent: #c27b48;
+      --highlight-bg: #f0d8bf;
+      --border: #e3d7c9;
+      --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 30px;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #f9f5ef 0, var(--bg) 55%, #e9e1d8 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      padding: 24px;
+      color: var(--text-main);
     }
-    .container {
-      max-width: 420px;
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+
+    .card {
+      max-width: 440px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 24px 22px 20px;
+      box-shadow:
+        0 16px 40px rgba(0,0,0,0.10),
+        0 0 0 1px rgba(255,255,255,0.7);
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background:
+        radial-gradient(circle at top left, rgba(194,123,72,0.15), transparent 55%);
+      pointer-events: none;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(226,217,205,0.9);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
     h1 {
       font-size: 22px;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+
+    .emoji {
+      font-size: 22px;
+      margin-left: 4px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .block {
+      background: rgba(248,243,237,0.95);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 12px 13px;
       margin-bottom: 12px;
     }
-    .emoji { font-size: 22px; }
-    .block {
-      background: #f8f3ed;
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 14px;
-      border: 1px solid #e3d7c9;
-    }
+
     .label {
-      font-size: 12px;
-      color: #777;
-      margin-bottom: 6px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
     }
-    p {
-      margin: 6px 0;
-      font-size: 15px;
-      line-height: 1.45;
+
+    .text {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 4px;
     }
+
     .highlight {
-      background: #f0d8bf;
-      padding: 2px 6px;
-      border-radius: 6px;
+      background: var(--highlight-bg);
+      border-radius: 999px;
+      padding: 2px 8px;
+      border: 1px solid rgba(194,123,72,0.35);
       white-space: nowrap;
     }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 14px 0 10px;
+    }
+
     .footer {
-      margin-top: 14px;
-      font-size: 12px;
-      color: #666;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.04);
+    }
+
+    .pill-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(240,216,191,0.75);
+      color: #5b3b1c;
+    }
+
+    .pill-ig span:first-child {
+      font-size: 13px;
+    }
+
+    @media (max-width: 420px) {
+      .card {
+        padding: 20px 16px 18px;
+      }
+      h1 {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>This could be your menu stand <span class="emoji">🍜</span></h1>
+  <main class="card">
+    <div class="inner">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>3D-printed menu stand concept</span>
+      </div>
 
-    <div class="block">
-      <div class="label">English</div>
-      <p>Hi, I'm Piet 👋</p>
-      <p>I design and 3D-print custom items for cafés — like this menu stand.</p>
-      <p>If you'd like something unique for your shop, feel free to contact me on Instagram:
-        <span class="highlight">@Floatypiet</span>
+      <h1>
+        Where your café menu could live
+        <span class="emoji">🍜</span>
+      </h1>
+
+      <p class="subtitle">
+        This small stand is just a demo piece. If you scanned this in your café, hi – nice to meet you.
       </p>
-    </div>
 
-    <div class="block">
-      <div class="label">中文</div>
-      <p>嗨，我是 Piet 👋</p>
-      <p>我專門為咖啡店設計並 3D 列印客製化的小物，例如這個菜單立架。</p>
-      <p>如果您想為店裡做一些特別的設計，歡迎到 Instagram 上聯繫我：
-        <span class="highlight">@Floatypiet</span>
-      </p>
-    </div>
+      <section class="block">
+        <div class="label">English</div>
+        <p class="text">Hi, I'm Piet 👋</p>
+        <p class="text">
+          I design and 3D-print custom items for cafés — like this menu stand.
+        </p>
+        <p class="text">
+          If you'd like something unique for your shop, feel free to contact me on Instagram:
+          <span class="highlight">@Floatypiet</span>
+        </p>
+      </section>
 
-    <div class="footer">
-      Concept demo page – not an official menu.
+      <section class="block">
+        <div class="label">中文</div>
+        <p class="text">嗨，我是 Piet 👋</p>
+        <p class="text">
+          我專門為咖啡店設計並 3D 列印客製化的小物，例如這個菜單立架。
+        </p>
+        <p class="text">
+          如果您想為店裡做一些特別的設計，歡迎到 Instagram 上聯繫我：
+          <span class="highlight">@Floatypiet</span>
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <footer class="footer">
+        <div class="pill">Concept demo page – not an official menu</div>
+        <div class="pill-ig">
+          <span>📸</span>
+          <span>@Floatypiet</span>
+        </div>
+      </footer>
     </div>
-  </div>
+  </main>
 </body>
 </html>
